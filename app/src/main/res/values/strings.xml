@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dialogos</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+</resources>
