@@ -13,13 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements DialogoPersonalizado.OnDialogoPersonalizadoListener {
+public class MainActivity extends AppCompatActivity implements DialogoPersonalizado.OnDialogoPersonalizadoListener{
 
     private TextView texto;
     private String usuario, contraseña;
     private final String USER = "usuario1";
     private final String PASS = "123456";
     private DialogoPersonalizado dialogo;
+    private DialogoSalir dialogoS;
     private Button btnSalir;
 
     @Override
@@ -43,15 +44,13 @@ public class MainActivity extends AppCompatActivity implements DialogoPersonaliz
             @Override
             public void onClick (View v){
 
-
+                dialogoS = new DialogoSalir();
 
 
             }
         });
 
     }
-
-
 
 
 

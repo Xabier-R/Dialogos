@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 public class DialogoSalir extends DialogFragment {
+    DialogoPersonalizado.OnDialogoPersonalizadoListener listener;
     @NonNull
     @Override
     public Dialog onCreateDialog(
@@ -38,7 +39,21 @@ public class DialogoSalir extends DialogFragment {
                     listener.onNegativeButtonClick();
                 }
             });
+
     return builder.create();
     }
+
+
+    public interface OnDialogoSalirListener{
+        void onPossitiveButtonClick(
+        );
+
+        void onNegativeButtonClick(
+
+        );
+
+    }
+
+
 }
 
