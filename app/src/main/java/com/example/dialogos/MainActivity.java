@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements DialogoPersonalizado.OnDialogoPersonalizadoListener{
+public class MainActivity extends AppCompatActivity implements DialogoPersonalizado.OnDialogoPersonalizadoListener, DialogoSalir.OnDialogoSalirListener {
 
     private TextView texto;
     private String usuario, contraseña;
@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements DialogoPersonaliz
             public void onClick (View v){
 
                 dialogoS = new DialogoSalir();
-
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                dialogoS.show(fragmentManager, "Login");
 
             }
         });
@@ -67,6 +68,10 @@ public class MainActivity extends AppCompatActivity implements DialogoPersonaliz
             texto.setText("Has iniciado");
 
         }
+        else
+        {
+            finish();
+        }
 
     }
 
@@ -74,6 +79,19 @@ public class MainActivity extends AppCompatActivity implements DialogoPersonaliz
     public void onNegativeButtonClick() {
 
         finish();
+
+    }
+
+
+    @Override
+    public void onPossitiveSalirButtonClick() {
+        this.finish();
+
+    }
+
+    @Override
+    public void onNegativeSalirButtonClick() {
+
 
     }
 }

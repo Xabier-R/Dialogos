@@ -1,6 +1,7 @@
 package com.example.dialogos;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 public class DialogoSalir extends DialogFragment {
-    DialogoPersonalizado.OnDialogoPersonalizadoListener listener;
+    DialogoSalir.OnDialogoSalirListener listener;
     @NonNull
     @Override
     public Dialog onCreateDialog(
@@ -27,7 +28,7 @@ public class DialogoSalir extends DialogFragment {
                 public void onClick(DialogInterface dialog, int which) {
                     //dialog.cancel();
                     Log.i("Dialogos", "Confirmación Aceptada.");
-                    listener.onPossitiveButtonClick();
+                    listener.onPossitiveSalirButtonClick();
                 }
             })
             .setNegativeButton("CANCELAR",
@@ -36,7 +37,7 @@ public class DialogoSalir extends DialogFragment {
                 public void onClick(DialogInterface dialog, int which) {
                     //dialog.cancel();
                     Log.i("Dialogos", "Confirmación Denegada");
-                    listener.onNegativeButtonClick();
+                    listener.onNegativeSalirButtonClick();
                 }
             });
 
@@ -45,14 +46,30 @@ public class DialogoSalir extends DialogFragment {
 
 
     public interface OnDialogoSalirListener{
-        void onPossitiveButtonClick(
+        void onPossitiveSalirButtonClick(
         );
 
-        void onNegativeButtonClick(
+        void onNegativeSalirButtonClick(
 
         );
 
     }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try{
+            listener = (DialogoSalir.OnDialogoSalirListener) context;
+
+        } catch (ClassCastException e) {
+
+            throw new ClassCastException(context.toString() +" no Implemento OnDialogoConfirmacionListener");
+        }
+    }
+
+
 
 
 }
